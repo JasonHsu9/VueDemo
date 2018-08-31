@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>v-model数据源绑定 实例</title>
+    <script src="../assets/js/vue.js"></script>
+</head>
+
+<body>
+    <h2>v-model数据源绑定 实例</h2>
+    <hr />
+
+    <div id="app">
+        <p>原始文本消息：{{message}}</p>
+        <p>v-model 即时绑定：
+            <input type="text" v-model='message' />
+        </p>
+        <p>v-model.lazy 失去焦点时绑定：
+            <input type="text" v-model.lazy='message' />
+        </p>
+        <p>v-model.trim 自动去除空格：
+            <input type="text" v-model.trim='message' />
+        </p>
+        <p>
+            <small>去除的是输入文本的开始和结尾空格</small>
+        </p>
+        <!-- .lazy修饰符可以使输入框失去焦点时，原始文本才发生改变 -->
+
+        <hr/>
+        <h2>文本域</h2>
+        <p>文本域绑定</p>
+        <textarea cols="30" rows="10" v-model='message'></textarea>
+
+        <hr/>
+        <h2>多选框绑定一个值</h2>
+        <form action="">
+            <input type="checkbox" id='Bryant' value='Kobe Bryant' v-model='player' />
+            <label for="Bryant">Bryant</label>
+            <input type="checkbox" id='James' value='LeBron James' v-model='player' />
+            <label for="James">James</label>
+            <input type="checkbox" id='Curry' value='Stephen Curry' v-model='player' />
+            <label for="Curry">Curry</label>
+        </form>
+        <p>
+            <small>已选择：{{player}}</small>
+        </p>
+
+        <hr/>
+        <h2>单选框绑定值</h2>
+        <form action="">
+            <input type="radio" id='man' value="男" v-model="sex">
+            <label for="man1">男</label>
+            <input type="radio" id='woman' value="女" v-model="sex">
+            <label for="woman">女</label>
+        </form>
+        <p>已选择：{{sex}}</p>
+    </div>
+
+    <script>
+        var app = new Vue({
+            el: '#app',
+            data: {
+                message: 'Hello v-model',
+                player: [], //v-model可以绑定多选框的值
+                sex: "女"
+            }
+        })
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>v-if&v-else&v-show</title>
+    <script src="../assets/js/vue.js"></script>
+</head>
+<body>
+    <h1>v-if&v-else&v-show</h1>
+    <hr />
+
+    <div id="app">
+        <p v-if="isIf">您好大佬！<sub><code>v-if</code></sub></p>
+        <!--v-if是按需要进行加载，它的好处是可以减轻服务器的压力，当服务器看到v-if的值是false就直接不用加载此节点了-->
+        <p v-else>我是徐乔丰<sub><code>v-else</code></sub></p>
+        <p v-show="isShow">我是通过修改css的display属性值来切换显示和隐藏<sub><code>v-show</code></sub></p>
+    </div>
+
+    <script>
+        var app = new Vue({
+          el: '#app',
+          data: {
+              isIf: true,
+              isShow: true
+          },
+          computed:{
+              isShow: function() {
+                  return false
+              }
+          }
+        });
+    </script>
+</body>
+</html>

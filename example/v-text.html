@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>v-text&v-html实例</title>
+    <script src="../assets/js/vue.js"></script>
+</head>
+
+<body>
+    <h1>v-text&v-html实例</h1>
+    <hr />
+    <div id="app">
+        <div>
+            <h3>v-text</h3>
+            <p>v-text='message'和{{message}} 这两种方法结果是一样，区别是v-text='message'会在渲染完成再显示，渲染未完成会显示空白，相对更友好</p>
+            <p>
+                <span>{{message}}</span>
+                <br>
+                <span v-text='message'></span>
+            </p>
+        </div>
+
+        <hr/>
+        <div>
+            <h3>v-html</h3>
+            <small><span>v-html输出会解析html标记：</span></small>
+            <p v-html='message2'></p>
+            <small><span>v-text输出把所有值当作文本输出：(这种方法慎用，在表单中会引起XSS攻击)</span></small>
+            <p v-text='message2'></p>
+        </div>
+    </div>
+
+    <script>
+
+        new Vue({
+            el: '#app',
+            data: {
+                message: 'Hello world',
+                message2: '<h2>Hello world</h2>'
+            }
+        })
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>v-bind绑定元素属性</title>
+    <script src="../assets/js/vue.js"></script>
+    <style>
+        .classA {
+            color: red;
+        }
+
+        .classB {
+            font-size: 150%;
+        }
+    </style>
+</head>
+
+<body>
+    <h2>v-bind绑定元素属性</h2>
+    <hr />
+
+    <div id="app">
+        <p>正常写法 v-bind:src="imgSrc"</p>
+        <img v-bind:src="imgSrc" alt="" style="width:300px;height:180px;border: 1px solid #ccc">
+        <p>缩写 :src="imgSrc"</p>
+        <img :src="imgSrc" alt="" style="width:400px;height:220px;border: 1px solid #ccc">
+
+        <hr>
+        <div :class="classValue">1 绑定Class</div>
+        <div :class="{classA:isRed}">2 绑定Class中的判断</div>
+        <div :class="[classA,classB]">2 绑定Class中的判断</div>
+        <div :class="isRed?classA:classB">2 绑定Class中的判断</div>
+
+        <hr/>
+        <div>
+            <input type="checkbox" id="isRed" v-model="isRed"/> 
+            <label for="isRed">isRed={{isRed}}</label>
+        </div> 
+
+        <hr/>
+        <div :style='{color:red,fontSize: font}'>绑定Style</div>
+        <div :style='styleObject'>绑定Style</div>
+    </div>
+
+    <script>
+        var app = new Vue({
+            el: '#app',
+            data: {
+                imgSrc: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1535705862678&di=d356e7b53e595e7f687cdc4838355989&imgtype=0&src=http%3A%2F%2Foux9g0njr.bkt.clouddn.com%2F18-1-11%2F46701657.jpg',//这里写图片地址，可以是本地或网络图片地址
+                classValue: "classA",
+                isRed: true,
+                classA: 'classA',
+                classB: 'classB',
+                red: 'red',
+                font: '40px',
+                styleObject: {
+                    color: "green",
+                    fontSize: "35px"
+                }
+
+            }
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>v-on实例</title>
+    <script src="../assets/js/vue.js"></script>
+</head>
+<body>
+    <h2>v-on实例</h2>
+    <hr />
+
+    <div id="app">
+       <p>湖人队本场比赛得分：{{score}}</p>
+       <p><small style="font-size:16px;font-style: italic; color: #ccc;">定位输入框，输入数字，回车可加相应分数</small></p>
+       <button v-on:click='bonusPoint2'>2分球：加2分</button><span> </span>
+       <button @click='bonusPoint3'>3分球：加3分</button><span> </span>
+       <button v-on:click='bonusPoint1'>罚一次球：加1分</button>
+       <input type="text" v-on:keyup.13='onEnter' v-model='score2' />
+       <!--  v-on:keyup.13='onEnter'这里可以绑定其它值，根据键盘码绑定想要的键盘值 -->
+    </div>
+
+    <script>
+        var app = new Vue({
+          el: '#app',
+          data: {
+            score: 0,
+            score2: 2
+          },
+          methods: {
+            bonusPoint1: function() {
+                this.score++;
+            },
+            bonusPoint2: function() {
+                this.score += 2;
+            },
+            bonusPoint3: function() {
+                this.score += 3;
+            },
+            onEnter: function() {
+                this.score = this.score + parseInt(this.score2); 
+            }
+          }
+        });
+    </script>
+</body>
+</html>

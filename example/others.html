@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>v-pre&v-cloak&v-once</title>
+    <script src="../assets/js/vue.js"></script>
+    <style>
+    [v-cloak] {
+  color: red;
+}
+    </style>
+</head>
+<body>
+    <h2>v-pre&v-cloak&v-once</h2>
+    <p>cloak:掩饰; 覆盖物</p>
+    <hr />
+
+    <div id="app">
+      <p v-pre>v-pre:{{message}}</p>
+      <p v-cloak>v-cloak:{{message}}</p>
+      <p><small>v-cloak是当页面渲染完成才显示，为用户体验做优化</small></p>
+      <p v-once>v-once只进行一次渲染，当你在下面的输入框输入文本时，这里并不会同时改变：{{message1}}</p>
+      <input type="text" v-model='message1'/>
+      <!-- 标签里面加v-pre，则此元素的vue语法模板不被渲染，而会原样输出两个花括号 -->
+    </div>
+
+    <script>
+        var app = new Vue({
+          el: '#app',
+          data: {
+            message: 'Hello world',
+            message1: 'Hello once'
+          }
+        });
+    </script>
+</body>
+</html>
